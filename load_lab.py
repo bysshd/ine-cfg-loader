@@ -66,7 +66,8 @@ def parse_config(host, addr):
     # interface GigabitEthernet3 is MNGMNT interface
 
     # TODO: check config files encoding
-    
+    # check encoding command file -i R*.txt
+
     txt_cfg = lab_folder + host + ".txt"
     mngmnt_interface = "GigabitEthernet3"
     ip_param = "ip address " + addr + " 255.255.255.0"
