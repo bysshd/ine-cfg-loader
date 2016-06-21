@@ -78,6 +78,7 @@ def parse_config(host, addr):
 
     if interface == []:
         print("creating mngmnt interface")
+        # TODO: optimize for advanced.foundation.labs
         parse.insert_before('line con 0', 'interface GigabitEthernet3')
         parse.commit()
 
