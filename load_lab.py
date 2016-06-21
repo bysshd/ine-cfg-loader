@@ -65,7 +65,6 @@ def parse_config(host, addr):
     # search mngmt interface in .txt files
     # interface GigabitEthernet3 is MNGMNT interface
 
-    # TODO: check config files encoding
     
     txt_cfg = lab_folder + host + ".txt"
     mngmnt_interface = "GigabitEthernet3"
