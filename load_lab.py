@@ -41,6 +41,7 @@ select = input("Enter Lab: ")
 # selected directory
 
 selected_directory = path_dict[int(select)]
+main_folder = selected_directory
 print("=====" + selected_directory.upper() + "=====")
 selected_directory = path + selected_directory + "/"
 print(selected_directory)
@@ -92,30 +93,35 @@ def parse_config(host, addr):
         parse.commit()
         parse.save_as(txt_cfg)
     else:
+        print("Interface already configured")
         pass
 
 def telnet_connection(host, addr, port):
-    http = "copy http://192.168.182.42/"
-    cmd_file = open(host + '.txt', 'a+')
+    conf_replace = "configure replace http://192.168.182.42/configs/"
+    http = conf_replace + main_folder + "/" + selected_lab + "/" + host + ".txt" + " " + "force"
+    cmd_file = open(host + '_cmd.txt', 'a+')
     cmd_file.write(http)
-    cmd_file.write("\n")
+    cmd_file.seek(0)
 
     tn = telnetlib.Telnet(addr, port, timeout=5)
     tn.set_debuglevel(100)
 
-    for each_line in cmd_file:
+    for each_line in cmd_file.readlines():
         tn.write(each_line.encode('ascii') + b"\n")
         time.sleep(2)
         tn.write(b"\n")
+        time.sleep(1)
         tn.write(b"\n")
+        time.sleep(1)
         tn.write(b"\n")
+        time.sleep(1)
         tn.read_until(b"#")
         time.sleep(1)
 
     cmd_file.close()
     tn.close()
     # remove file
-    remove(host + ".txt")
+    #remove(host + ".txt")
 
 
 for line in ipfile_lines:
