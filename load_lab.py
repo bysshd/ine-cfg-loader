@@ -62,22 +62,9 @@ print("=====" + selected_lab.upper() + "=====")
 print(lab_folder)
 
 
-# TODO: function check encoding
-
 def parse_config(host, addr):
     # search mngmt interface in .txt files
     # interface GigabitEthernet3 is MNGMNT interface
-
-    # TODO: check config files encoding
-    # check encoding command file -i R*.txt
-    #
-    # check all files with wrong encoding
-
-
-
-
-
-
     txt_cfg = lab_folder + host + ".txt"
     mngmnt_interface = "GigabitEthernet3"
     ip_param = "ip address " + addr + " 255.255.255.0"
@@ -88,8 +75,6 @@ def parse_config(host, addr):
 
     if interface == []:
         print("creating mngmnt interface")
-        # TODO: optimize for advanced.foundation.labs
-        # TODO: privilige 15 without PWD
         parse.insert_before('line con 0', 'interface GigabitEthernet3')
         parse.commit()
 
@@ -129,8 +114,6 @@ def telnet_connection(host, addr, port):
 
     cmd_file.close()
     tn.close()
-    # remove file
-    #remove(host + ".txt")
 
 
 for line in ipfile_lines:
