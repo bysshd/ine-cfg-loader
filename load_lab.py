@@ -62,6 +62,8 @@ print("=====" + selected_lab.upper() + "=====")
 print(lab_folder)
 
 
+# TODO: function check encoding
+
 def parse_config(host, addr):
     # search mngmt interface in .txt files
     # interface GigabitEthernet3 is MNGMNT interface
@@ -70,7 +72,7 @@ def parse_config(host, addr):
     # check encoding command file -i R*.txt
     #
     # check all files with wrong encoding
-    # 
+
 
 
 
