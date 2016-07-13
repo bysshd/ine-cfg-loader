@@ -63,10 +63,6 @@ print(lab_folder)
 
 
 # TODO: function check encoding
-# TODO: function check encoding
-# TODO: function check encoding
-# TODO: function check encoding
-# TODO: function check encoding
 
 def parse_config(host, addr):
     # search mngmt interface in .txt files
