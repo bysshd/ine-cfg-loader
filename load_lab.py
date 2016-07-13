@@ -1,6 +1,5 @@
 from os import listdir
 from os import getenv
-from os import remove
 from ciscoconfparse import CiscoConfParse
 import re
 import telnetlib
