@@ -68,6 +68,13 @@ def parse_config(host, addr):
 
     # TODO: check config files encoding
     # check encoding command file -i R*.txt
+    #
+    # check all files with wrong encoding
+    # 
+
+
+
+
 
     txt_cfg = lab_folder + host + ".txt"
     mngmnt_interface = "GigabitEthernet3"
