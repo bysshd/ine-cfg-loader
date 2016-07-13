@@ -129,8 +129,6 @@ def telnet_connection(host, addr, port):
 
     cmd_file.close()
     tn.close()
-    # remove file
-    #remove(host + ".txt")
 
 
 for line in ipfile_lines:
