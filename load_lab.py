@@ -1,6 +1,5 @@
 from os import listdir
 from os import getenv
-from os import remove
 from ciscoconfparse import CiscoConfParse
 import re
 import telnetlib
@@ -62,42 +61,28 @@ print("=====" + selected_lab.upper() + "=====")
 print(lab_folder)
 
 
-# TODO: function check encoding
-
 def parse_config(host, addr):
     # search mngmt interface in .txt files
-    # interface GigabitEthernet3 is MNGMNT interface
-
-    # TODO: check config files encoding
-    # check encoding command file -i R*.txt
-    #
-    # check all files with wrong encoding
-
-
-
-
-
+    # interface GigabitEthernet3 is MGMT interface
 
     txt_cfg = lab_folder + host + ".txt"
-    mngmnt_interface = "GigabitEthernet3"
+    mgmt_interface = "GigabitEthernet3"
     ip_param = "ip address " + addr + " 255.255.255.0"
 
     parse = CiscoConfParse(txt_cfg, factory=True)
-    interface = parse.find_interface_objects(mngmnt_interface)
+    interface = parse.find_interface_objects(mgmt_interface)
     # add interface gig3
 
     if interface == []:
-        print("creating mngmnt interface")
-        # TODO: optimize for advanced.foundation.labs
-        # TODO: privilige 15 without PWD
+        print("creating mgmt interface")
         parse.insert_before('line con 0', 'interface GigabitEthernet3')
         parse.commit()
 
-        for obj in parse.find_interface_objects(mngmnt_interface):
+        for obj in parse.find_interface_objects(mgmt_interface):
             obj.append_to_family('!')
             obj.append_to_family(' no shutdown')
             obj.append_to_family(' ' + ip_param)
-            obj.append_to_family(' description MNGMNT')
+            obj.append_to_family(' description MGMT')
 
         parse.commit()
         parse.save_as(txt_cfg)
@@ -105,11 +90,12 @@ def parse_config(host, addr):
         print("Interface already configured")
         pass
 
+
 def telnet_connection(host, addr, port):
     conf_replace = "configure replace http://192.168.182.42/configs/"
-    http = conf_replace + main_folder + "/" + selected_lab + "/" + host + ".txt" + " " + "force"
+    cmd = conf_replace + main_folder + "/" + selected_lab + "/" + host + ".txt" + " " + "force"
     cmd_file = open(host + '_cmd.txt', 'a+')
-    cmd_file.write(http)
+    cmd_file.write(cmd)
     cmd_file.seek(0)
 
     tn = telnetlib.Telnet(addr, port, timeout=5)
