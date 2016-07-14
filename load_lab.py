@@ -1,5 +1,7 @@
 from os import listdir
 from os import getenv
+from os import system
+from os import chdir
 from ciscoconfparse import CiscoConfParse
 import re
 import telnetlib
@@ -67,6 +69,11 @@ def parse_config(host, addr):
     txt_cfg = lab_folder + host + ".txt"
     mngmnt_interface = "GigabitEthernet3"
     ip_param = "ip address " + addr + " 255.255.255.0"
+
+    chdir(lab_folder)
+    bashcmd = 'for file in *.txt; do iconv -sc -f UTF16LE -t US-ASCII "$file" -o "${file%.txt}.txt"  ; done'
+    system(bashcmd)
+    time.sleep(1)
 
     parse = CiscoConfParse(txt_cfg, factory=True)
     interface = parse.find_interface_objects(mngmnt_interface)
