@@ -62,6 +62,7 @@ lab_folder = selected_directory + selected_lab + "/"
 print("=====" + selected_lab.upper() + "=====")
 print(lab_folder)
 
+
 def file_encofing(lab_folder):
     chdir(lab_folder)
     bashcmd = 'for file in *.txt; do iconv -sc -f UTF16LE -t US-ASCII "$file" -o "${file%.txt}.txt"  ; done'
@@ -69,6 +70,7 @@ def file_encofing(lab_folder):
     time.sleep(1)
 
 file_encofing(lab_folder)
+
 
 def parse_config(host, addr):
     # search mngmt interface in .txt files
@@ -132,7 +134,7 @@ for line in ipfile_lines:
     addr = host_port.split(" ")[1]
     port = host_port.split(" ")[2]
 
-    #parse_config(host, addr)
-    #telnet_connection(host, addr, port)
+    parse_config(host, addr)
+    telnet_connection(host, addr, port)
 
 ipfile.close()
