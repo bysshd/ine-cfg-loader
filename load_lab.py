@@ -103,7 +103,7 @@ def parse_config(host, addr):
 
 def telnet_connection(host, addr, port):
     conf_replace = "configure replace http://192.168.182.42/configs/"
-    cmd = conf_replace + main_folder + "/" + selected_lab + "/" + host + ".txt" + " " + "force"
+    cmd = conf_replace + main_folder + "/" + selected_lab + "/" + host + ".txt" + " " + "force" + "\n"
     cmd_file = open(host + '_cmd.txt', 'a+')
     cmd_file.write(cmd)
     cmd_file.seek(0)
