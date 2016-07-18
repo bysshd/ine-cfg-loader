@@ -63,17 +63,17 @@ print("=====" + selected_lab.upper() + "=====")
 print(lab_folder)
 
 
-def file_encofing(lab_folder):
+def file_encoding(lab_folder):
     chdir(lab_folder)
     bashcmd = 'for file in *.txt; do iconv -sc -f UTF16LE -t US-ASCII "$file" -o "${file%.txt}.txt"  ; done'
     system(bashcmd)
     time.sleep(1)
 
-file_encofing(lab_folder)
+file_encoding(lab_folder)
 
 
 def parse_config(host, addr):
-    # search mngmt interface in .txt files
+    # search mgmt interface in .txt files
     # interface GigabitEthernet3 is MGMT interface
     txt_cfg = lab_folder + host + ".txt"
     mgmt_interface = "GigabitEthernet3"
@@ -84,7 +84,7 @@ def parse_config(host, addr):
     # add interface gig3
 
     if interface == []:
-        print("creating mngmnt interface")
+        print("creating mgmt interface")
         parse.insert_before('line con 0', 'interface GigabitEthernet3')
         parse.commit()
 
