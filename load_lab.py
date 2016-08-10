@@ -14,9 +14,13 @@ path = getenv("HOME") + '/configs/'
 ipfile = open('ipaddr.txt', 'r')
 ipfile_lines = ipfile.readlines()
 
-print("Save current config?")
-answer = input("YES")
-# TODO: case constrution
+def save_answer():
+    question = input('save current configs? ')
+    if question == 'yes':
+        print('saving')
+    elif question == 'no':
+        print('pass')
+save_answer()
 
 # convert list path to dict
 
