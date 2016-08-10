@@ -13,7 +13,7 @@ path = getenv("HOME") + '/configs/'
 
 ipfile = open('ipaddr.txt', 'r')
 ipfile_lines = ipfile.readlines()
-
+#TODO backup current
 
 # convert list path to dict
 
