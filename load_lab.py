@@ -39,9 +39,10 @@ path_dict = path_to_dict(list_path)
 print_path_to_dict(path_dict)
 
 select = input("Enter Lab: ")
+select = int(select)
 # selected directory
 
-selected_directory = path_dict[int(select)]
+selected_directory = path_dict[select]
 main_folder = selected_directory
 print("=====" + selected_directory.upper() + "=====")
 selected_directory = path + selected_directory + "/"
@@ -57,7 +58,8 @@ print_path_to_dict(path_dict)
 # select lab
 
 select = input("Enter Lab Number: ")
-selected_lab = path_dict[int(select)]
+select = int(select)
+selected_lab = path_dict[select]
 lab_folder = selected_directory + selected_lab + "/"
 print("=====" + selected_lab.upper() + "=====")
 print(lab_folder)
