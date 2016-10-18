@@ -2,6 +2,7 @@
 import telnetlib
 import re
 
+
 ipfile = open('ipaddr.txt', 'r')
 ipfile_lines = ipfile.readlines()
 
