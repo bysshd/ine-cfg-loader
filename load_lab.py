@@ -38,8 +38,7 @@ list_path.sort()
 path_dict = path_to_dict(list_path)
 print_path_to_dict(path_dict)
 
-select = input("Enter Lab: ")
-select = int(select)
+select = int(input("Enter Lab: "))
 # selected directory
 
 selected_directory = path_dict[select]
@@ -57,8 +56,7 @@ print_path_to_dict(path_dict)
 
 # select lab
 
-select = input("Enter Lab Number: ")
-select = int(select)
+select = int(input("Enter Lab Number: "))
 selected_lab = path_dict[select]
 lab_folder = selected_directory + selected_lab + "/"
 print("=====" + selected_lab.upper() + "=====")
