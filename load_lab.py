@@ -17,9 +17,9 @@ ipfile_lines = ipfile.readlines()
 def save_answer():
     question = input('save current configs? ')
     if question == 'yes':
-        print('saving')
+        pass
     elif question == 'no':
-        print('pass')
+        pass
 save_answer()
 
 # convert list path to dict
