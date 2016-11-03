@@ -2,6 +2,7 @@ from os import listdir
 from os import getenv
 from os import system
 from os import chdir
+from os import remove
 from ciscoconfparse import CiscoConfParse
 import re
 import telnetlib
@@ -131,6 +132,8 @@ def telnet_connection(host, addr, port):
         time.sleep(1)
 
     cmd_file.close()
+    # TODO: remove cmd_file
+    remove(host + '_cmd.txt')
     tn.close()
 
 
